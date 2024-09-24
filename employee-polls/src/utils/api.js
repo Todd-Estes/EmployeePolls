@@ -5,3 +5,8 @@ import {
   _saveQuestionAnswer
 } from './_DATA';
 
+export function getUsers() {
+  return _getUsers().then((users) => ({
+    users,
+  }));
+}
