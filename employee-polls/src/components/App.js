@@ -1,8 +1,13 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { Router, Route, Routes } from "react-router-dom";
 import "../App.css";
 import { fetchUsers } from "../store/usersSlice";
+import NavBar from "./NavBar";
+import Home from "./Home";
 import LogIn from "./LogIn";
+import Leaderboard from "./Leaderboard";
+import NewQuestion from "./NewQuestion";
 
 function App() {
   const dispatch = useDispatch();
@@ -15,17 +20,22 @@ function App() {
   }, []);
 
   if (loading) {
-    return (<p>LOADING</p>)
+    return <p>LOADING</p>
   }
 
+  if (!authedUser) {
+    return <LogIn />
+  }
+  
   return (
-    <div>
-      {authedUser ? (
-        <p>You finally made it</p>
-      ) : (
-        <LogIn />
-      )}
-    </div>
+    <>
+      <NavBar />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/leaderboard" element={<Leaderboard />} />
+        <Route path="/add" element={<NewQuestion />} />
+      </Routes>
+    </>
   );
 };
 
