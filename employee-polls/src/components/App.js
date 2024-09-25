@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Router, Route, Routes } from "react-router-dom";
 import "../App.css";
-import { fetchUsers } from "../store/usersSlice";
+import { handleInitialData } from "../store/combinedActions";
 import NavBar from "./NavBar";
 import Home from "./Home";
 import LogIn from "./LogIn";
@@ -14,9 +14,9 @@ function App() {
   const users = useSelector(state => state.users);
   const authedUser = useSelector(state => state.authedUser);
   const loading = users === null;
-
+ 
   useEffect(() => {
-    dispatch(fetchUsers());
+    dispatch(handleInitialData());
   }, []);
 
   if (loading) {
