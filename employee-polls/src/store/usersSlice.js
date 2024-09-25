@@ -5,7 +5,7 @@ import { getUsers } from "../utils/api";
 
 const usersSlice = createSlice({
   name: 'users',
-  initialState: {},
+  initialState: null,
   reducers: {
     setUsers: (state, action) => {
       return action.payload;
