@@ -12,7 +12,7 @@ const LogIn = () => {
 
   }
   return (
-    <div>
+    <div className="container">
       <div>LogIn</div>
       <select defaultValue="" onChange={handleChange}>
         <option value="" disabled>
