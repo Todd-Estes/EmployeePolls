@@ -10,3 +10,10 @@ export function getUsers() {
     users,
   }));
 }
+
+
+export function getQuestions() {
+  return _getQuestions().then((questions) => ({
+    questions,
+  }));
+}
