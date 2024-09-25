@@ -1,22 +1,20 @@
-import { useEffect } from "react";
-import { connect } from "react-redux";
+import React, { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import "../App.css";
 import { fetchUsers } from "../store/usersSlice";
 import LogIn from "./LogIn";
-import authedUserSlice from "../store/authedUserSlice";
 
-function App(props) {
+function App() {
+  const dispatch = useDispatch();
+  const users = useSelector(state => state.users);
+  const authedUser = useSelector(state => state.authedUser);
+  const loading = users === null;
+
   useEffect(() => {
-    props.dispatch(fetchUsers());
+    dispatch(fetchUsers());
   }, []);
-  console.log(props);
 
-  const {
-    users,
-    authedUser,
-  } = props;
-
-  if (props.loading) {
+  if (loading) {
     return (<p>LOADING</p>)
   }
 
@@ -25,16 +23,10 @@ function App(props) {
       {authedUser ? (
         <p>You finally made it</p>
       ) : (
-        <LogIn users={users} />
+        <LogIn />
       )}
     </div>
   );
-  }
+};
 
-const mapStateToProps = ({ users, authedUser }) => ({
-  loading: users === null,
-  authedUser,
-  users,
-});
-
-export default connect(mapStateToProps)(App);
+export default App;
