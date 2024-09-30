@@ -10,12 +10,15 @@ const Home = () => {
   const answeredQuestionIds = Object.keys(loggedInUser.answers);
 
   const questionsByType = () => {
-    let answeredQ = [];
-    let newQ = [];
-    Object.values(questions).map(q => {
-      answeredQuestionIds.includes(q.id) ? answeredQ.push(q) : newQ.push(q);
-    });
-    return [answeredQ, newQ];
+    return Object.values(questions).reduce(
+      ([answered, unanswered], question) => {
+        (answeredQuestionIds.includes(question.id) ? answered : unanswered).push(
+          question
+        );
+        return [answered, unanswered];
+      },
+      [[], []]
+    );
   };
 
   const [answeredQuestions, newQuestions] = questionsByType();
