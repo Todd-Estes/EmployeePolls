@@ -8,11 +8,18 @@ const Home = () => {
   const questions = useSelector(state => state.questions);
 
   const answeredQuestionIds = Object.keys(loggedInUser.answers);
-  const answeredQuestions = answeredQuestionIds.map(id => questions[id]);
 
-  const newQuestions = Object.keys(questions)
-    .filter((id) => !answeredQuestionIds.includes(id))
-    .map((id) => questions[id]);
+  const questionsByType = () => {
+    let answeredQ = [];
+    let newQ = [];
+    Object.values(questions).map(q => {
+      answeredQuestionIds.includes(q.id) ? answeredQ.push(q) : newQ.push(q);
+    });
+    return [answeredQ, newQ];
+  };
+
+  const [answeredQuestions, newQuestions] = questionsByType();
+  console.log(answeredQuestions)
 
   return (
     <div className="container">
@@ -25,4 +32,4 @@ const Home = () => {
   );
 }
 
-export default Home
+export default Home;
