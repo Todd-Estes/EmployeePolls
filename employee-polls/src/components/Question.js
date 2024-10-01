@@ -19,23 +19,24 @@ const Question = () => {
   // useEffect(() => {
   //   userAnswers = Object.keys(loggedInUser.answers)
   // })
-  console.log(question.avatarURL);
+
   return (
     <div>
-      <div>QuestionShow id: {questionId}</div>
-      <div>Question Author: {question.author}</div>
-      <div>Question Answered?: {answered}</div>
       <div>
         <img
           src={authorUser.avatarURL}
           alt={`Avatar of ${question.author}`}
           style={{
-            width: 128,
-            height: 193,
+            width: 192,
+            height: 290,
             objectFit: "cover",
+            borderRadius: "10px",
           }}
         />
       </div>
+      <div>QuestionShow id: {questionId}</div>
+      <div>Question Author: {question.author}</div>
+      <div>Question Answered?: {answered}</div>
     </div>
   );
 }

@@ -5,7 +5,7 @@ import { useSelector, useDispatch } from "react-redux";
 const NavBar = () => {
   const authedUser = useSelector(state => state.authedUser);
   const loggedInUser = useSelector(state => state.users[authedUser])
-
+  // TODO : flex links into single line, move username and avatar to right, implement logout
   return (
     <nav className="navbar">
       <div className="container">
@@ -22,6 +22,18 @@ const NavBar = () => {
         </ul>
         <div>
           {loggedInUser.name}
+          <span>
+            <img
+              src={loggedInUser.avatarURL}
+              alt={`Avatar of ${loggedInUser.name}`}
+              style={{
+                width: 29,
+                height: 43,
+                objectFit: "cover",
+                borderRadius: "10px",
+              }}
+            />
+          </span>
         </div>
       </div>
     </nav>
