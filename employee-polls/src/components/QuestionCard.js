@@ -1,16 +1,18 @@
 import React from 'react'
+import { formatDate } from "../utils/helpers";
+import { Link } from 'react-router-dom';
 
 const QuestionCard = (props) => {
-  const { questions, cardTitle } = props;
+  const { question} = props;
   return (
-    <div>
-      <div>{cardTitle}</div>
-      <ul>
-        {questions.map((q) => (
-          <li key={q.id}>Question id: {q.id}, Author: {q.author}</li>
-        ))}
-      </ul>
-    </div>
+    <li key={question.id}>
+      Question id: {question.id}, Author: {question.author}, Timestamp:{" "}
+      {formatDate(question.timestamp)}
+      <br />
+      <span>
+        <Link to={`/questions/${question.id}`}>Show</Link>
+      </span>
+    </li>
   );
 }
 
