@@ -9,11 +9,21 @@ const usersSlice = createSlice({
   reducers: {
     setUsers: (state, action) => {
       return action.payload;
+    },
+    setUserVote: (state, action) => {
+      const { userId, questionId, option } = action.payload;
+      state[userId] = {
+        ...state[userId],
+        answers: {
+          ...state[userId].answers,
+          [questionId]: option
+        }
+      }
     }
   }
 });
 
-export const { setUsers } = usersSlice.actions;
+export const { setUsers, setUserVote } = usersSlice.actions;
 
 export const fetchUsers = () => async (dispatch) => {
   const { users } = await getUsers();

@@ -8,7 +8,6 @@ const Home = () => {
   const questions = useSelector(state => state.questions);
 
   const answeredQuestionIds = Object.keys(loggedInUser.answers);
-  console.log(answeredQuestionIds)
 
   const questionsByType = () => {
     return Object.values(questions).reduce(

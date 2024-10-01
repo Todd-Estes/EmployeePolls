@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import Error from './Error';
+import { setUserVote } from '../store/usersSlice';
 
 const Question = () => {
   const { questionId } = useParams();
@@ -11,10 +12,20 @@ const Question = () => {
     return <Error />;
   }
 
+  const dispatch = useDispatch();
   const authedUser = useSelector((state) => state.authedUser);
   const loggedInUser = useSelector((state) => state.users[authedUser]);
-  const [answered, setAnswered] = useState(loggedInUser.answers[questionId]);
+  const answered = useSelector((state) => state.users[authedUser].answers[questionId]);
   const authorUser = useSelector((state) => state.users[question.author])
+
+  console.log(answered)
+  const handleVote = (option) => {
+    dispatch(setUserVote({
+      userId: loggedInUser.id,
+      questionId: question.id,
+      option
+    }))
+  }
 
   // useEffect(() => {
   //   userAnswers = Object.keys(loggedInUser.answers)
@@ -22,6 +33,7 @@ const Question = () => {
 
   return (
     <div>
+      <div>Poll by {question.author}</div>
       <div>
         <img
           src={authorUser.avatarURL}
@@ -34,9 +46,18 @@ const Question = () => {
           }}
         />
       </div>
-      <div>QuestionShow id: {questionId}</div>
-      <div>Question Author: {question.author}</div>
-      <div>Question Answered?: {answered}</div>
+      <div>
+        <h1>Would You Rather</h1>
+        <p>{question.optionOne.text}</p>
+        <button onClick={() => handleVote("optionOne")}>Vote</button>
+        <p>{question.optionTwo.text}</p>
+        <button onClick={() => handleVote("optionTwo")}>Vote</button>
+        {answered && (
+          <p>
+            You voted on <b>{question[answered].text}</b>
+          </p>
+        )}
+      </div>
     </div>
   );
 }
