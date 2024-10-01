@@ -1,17 +1,17 @@
 import React from 'react'
-import Question from './QuestionCard';
+import QuestionCard from './QuestionCard';
 
 const QuestionsContainer = (props) => {
   const { questions, cardTitle } = props;
 
-  questions.sort((a, b) => a.timestamp - b.timestamp);
+  const sortedQuestions = [...questions].sort((a, b) => a.timestamp - b.timestamp);
 
   return (
     <div>
       <div>{cardTitle}</div>
       <ul>
-        {questions.map((q) => (
-          <Question question={q} />
+        {sortedQuestions.map((q) => (
+          <QuestionCard key={q.id} question={q} />
         ))}
       </ul>
     </div>

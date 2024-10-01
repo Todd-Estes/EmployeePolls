@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 const QuestionCard = (props) => {
   const { question} = props;
   return (
-    <li key={question.id}>
+    <li>
       Question id: {question.id}, Author: {question.author}, Timestamp:{" "}
       {formatDate(question.timestamp)}
       <br />
