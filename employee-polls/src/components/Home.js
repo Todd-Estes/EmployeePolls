@@ -1,6 +1,6 @@
 import React from 'react'
 import { useSelector } from 'react-redux';
-import QuestionCard from './QuestionCard';
+import QuestionCard from './QuestionsContainer';
 
 const Home = () => {
   const authedUser = useSelector(state => state.authedUser);
@@ -8,6 +8,7 @@ const Home = () => {
   const questions = useSelector(state => state.questions);
 
   const answeredQuestionIds = Object.keys(loggedInUser.answers);
+  console.log(answeredQuestionIds)
 
   const questionsByType = () => {
     return Object.values(questions).reduce(
@@ -22,14 +23,13 @@ const Home = () => {
   };
 
   const [answeredQuestions, newQuestions] = questionsByType();
-  console.log(answeredQuestions)
 
   return (
     <div className="container">
       <div className="content">
         <h1>Home</h1>
-            <QuestionCard questions={answeredQuestions} cardTitle={"New Questions"}/>
-            <QuestionCard questions={newQuestions} cardTitle={"Answered Questions"}/>
+            <QuestionCard questions={answeredQuestions} cardTitle={"Answered Questions"}/>
+            <QuestionCard questions={newQuestions} cardTitle={"New Questions"}/>
       </div>
     </div>
   );

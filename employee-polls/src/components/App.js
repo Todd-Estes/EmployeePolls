@@ -8,6 +8,7 @@ import Home from "./Home";
 import LogIn from "./LogIn";
 import Leaderboard from "./Leaderboard";
 import NewQuestion from "./NewQuestion";
+import Question from "./Question";
 
 function App() {
   const dispatch = useDispatch();
@@ -34,6 +35,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/leaderboard" element={<Leaderboard />} />
         <Route path="/add" element={<NewQuestion />} />
+        <Route path="/questions/:questionId" element={<Question />} />
       </Routes>
     </>
   );
