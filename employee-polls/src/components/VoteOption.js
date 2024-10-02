@@ -1,13 +1,12 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { setUserVote } from "../store/usersSlice";
-import { setOptionVote } from '../store/questionsSlice';
+import { handleUserVote } from '../store/combinedActions';
 import { getPercentOfVote } from '../utils/helpers';
 
 const VoteOption = (props) => {
   const { questionId, option, answered } = props;
   const question = useSelector((state) => state.questions[questionId]);
-  console.log(question)
+
   const questionOption = question[option];
   const percentOfVote = getPercentOfVote(question, questionOption);
 
@@ -18,17 +17,12 @@ const VoteOption = (props) => {
   
   const handleVote = (option) => {
     dispatch(
-      setUserVote({
+      handleUserVote({
         userId: loggedInUser.id,
         questionId: question.id,
         option,
-      }));
-    dispatch(
-      setOptionVote({
-        userId: loggedInUser.id,
-        questionId: question.id,
-        option,
-      }));
+      })
+    );
   };
   return (
     <div>
