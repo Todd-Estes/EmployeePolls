@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import Error from './Error';
+import VoteOption from './VoteOption';
 import { setUserVote } from '../store/usersSlice';
 
 const Question = () => {
@@ -15,49 +16,39 @@ const Question = () => {
   const dispatch = useDispatch();
   const authedUser = useSelector((state) => state.authedUser);
   const loggedInUser = useSelector((state) => state.users[authedUser]);
-  const answered = useSelector((state) => state.users[authedUser].answers[questionId]);
-  const authorUser = useSelector((state) => state.users[question.author])
-
-  console.log(answered)
-  const handleVote = (option) => {
-    dispatch(setUserVote({
-      userId: loggedInUser.id,
-      questionId: question.id,
-      option
-    }))
-  }
-
-  // useEffect(() => {
-  //   userAnswers = Object.keys(loggedInUser.answers)
-  // })
+  const answered = useSelector(
+    (state) => state.users[authedUser].answers[questionId]
+  );
+  const authorUser = useSelector((state) => state.users[question.author]);
 
   return (
-    <div>
-      <div>Poll by {question.author}</div>
-      <div>
+    <div className="question-page">
+      <div className="question-header">
+        <h2>Poll by {question.author}</h2>
         <img
           src={authorUser.avatarURL}
           alt={`Avatar of ${question.author}`}
-          style={{
-            width: 192,
-            height: 290,
-            objectFit: "cover",
-            borderRadius: "10px",
-          }}
+          className="author-avatar"
         />
       </div>
-      <div>
-        <h1>Would You Rather</h1>
-        <p>{question.optionOne.text}</p>
-        <button onClick={() => handleVote("optionOne")}>Vote</button>
-        <p>{question.optionTwo.text}</p>
-        <button onClick={() => handleVote("optionTwo")}>Vote</button>
-        {answered && (
-          <p>
-            You voted on <b>{question[answered].text}</b>
-          </p>
-        )}
+      <h1>Would You Rather</h1>
+      <div className="vote-options">
+        <VoteOption
+          questionId={questionId}
+          option="optionOne"
+          answered={answered}
+        />
+        <VoteOption
+          questionId={questionId}
+          option="optionTwo"
+          answered={answered}
+        />
       </div>
+      {answered && (
+        <p className="user-vote">
+          You voted on <b>{question[answered].text}</b>
+        </p>
+      )}
     </div>
   );
 }

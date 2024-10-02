@@ -8,8 +8,8 @@ const NavBar = () => {
   // TODO : flex links into single line, move username and avatar to right, implement logout
   return (
     <nav className="navbar">
-      <div className="container">
-        <ul>
+      <div className="container navbar-content">
+        <ul className="navbar-links">
           <li>
             <Link to="/">Home</Link>
           </li>
@@ -20,20 +20,13 @@ const NavBar = () => {
             <Link to="/add">New</Link>
           </li>
         </ul>
-        <div>
-          {loggedInUser.name}
-          <span>
-            <img
-              src={loggedInUser.avatarURL}
-              alt={`Avatar of ${loggedInUser.name}`}
-              style={{
-                width: 29,
-                height: 43,
-                objectFit: "cover",
-                borderRadius: "10px",
-              }}
-            />
-          </span>
+        <div className="user-info">
+          <img
+            src={loggedInUser.avatarURL}
+            alt={`Avatar of ${loggedInUser.name}`}
+            className="user-avatar"
+          />
+          <span className="username">{loggedInUser.name}</span>
         </div>
       </div>
     </nav>

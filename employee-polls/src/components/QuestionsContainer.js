@@ -7,9 +7,9 @@ const QuestionsContainer = (props) => {
   const sortedQuestions = [...questions].sort((a, b) => a.timestamp - b.timestamp);
 
   return (
-    <div>
-      <div>{cardTitle}</div>
-      <ul>
+    <div className="questions-container">
+      <h2 className="questions-title">{cardTitle}</h2>
+      <ul className="questions-list">
         {sortedQuestions.map((q) => (
           <QuestionCard key={q.id} question={q} />
         ))}

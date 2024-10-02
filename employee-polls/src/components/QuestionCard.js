@@ -5,13 +5,15 @@ import { Link } from 'react-router-dom';
 const QuestionCard = (props) => {
   const { question} = props;
   return (
-    <li>
-      Question id: {question.id}, Author: {question.author}, Timestamp:{" "}
-      {formatDate(question.timestamp)}
-      <br />
-      <span>
-        <Link to={`/questions/${question.id}`}>Show</Link>
-      </span>
+    <li className="question-card">
+      <div className="question-info">
+        <p>Question id: {question.id}</p>
+        <p>Author: {question.author}</p>
+        <p>{formatDate(question.timestamp)}</p>
+      </div>
+      <Link to={`/questions/${question.id}`} className="question-link">
+        Show
+      </Link>
     </li>
   );
 }
