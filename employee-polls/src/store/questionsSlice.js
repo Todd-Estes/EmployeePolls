@@ -8,10 +8,20 @@ const questionsSlice = createSlice({
     setQuestions: (state, action) => {
       return action.payload;
     },
+    setOptionVote: (state, action) => {
+      const { userId, questionId, option} = action.payload;
+      state[questionId] = {
+        ...state[questionId],
+        [option]: {
+          ...state[questionId][option],
+          votes: [...state[questionId][option].votes, userId]
+        }
+      };
+    },
   },
 });
 
-export const { setQuestions } = questionsSlice.actions;
+export const { setQuestions, setOptionVote } = questionsSlice.actions;
 
 export const fetchQuestions = () => async (dispatch) => {
   const { questions } = await getQuestions();
