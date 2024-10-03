@@ -20,7 +20,7 @@ function App() {
     if (!users) {
       dispatch(handleInitialData());
     }
-  }, [dispatch, users]);
+  }, []);
 
   if (loading) {
     return <p>LOADING</p>

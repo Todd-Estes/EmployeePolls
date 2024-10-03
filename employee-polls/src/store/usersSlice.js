@@ -28,11 +28,10 @@ const usersSlice = createSlice({
         questions: [...state[userId].questions, questionId],
       };
     },
-    resetUsers: () => null,
   },
 });
 
-export const { setUsers, setUserVote, setQuestion, resetUsers } = usersSlice.actions;
+export const { setUsers, setUserVote, setQuestion } = usersSlice.actions;
 
 export const fetchUsers = () => async (dispatch) => {
   const { users } = await getUsers();

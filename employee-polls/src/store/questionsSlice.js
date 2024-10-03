@@ -34,11 +34,10 @@ const questionsSlice = createSlice({
         },
       };
     },
-    resetQuestions: () => null,
   },
 });
 
-export const { setQuestions, setOptionVote, setNewQuestion, resetQuestions } = questionsSlice.actions;
+export const { setQuestions, setOptionVote, setNewQuestion } = questionsSlice.actions;
 
 export const fetchQuestions = () => async (dispatch) => {
   const { questions } = await getQuestions();

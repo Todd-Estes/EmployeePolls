@@ -50,10 +50,3 @@ export const handleUserVote =
       })
     );
   };
-
-  export const handleResetAllState = () => (dispatch) => {
-    dispatch(resetAuthedUser());
-    dispatch(resetUsers());
-    dispatch(resetQuestions());
-
-  }
