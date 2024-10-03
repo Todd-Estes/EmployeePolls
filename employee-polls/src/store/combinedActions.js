@@ -1,5 +1,6 @@
-import { fetchUsers, setUserVote } from "./usersSlice";
-import { fetchQuestions, setOptionVote } from "./questionsSlice";
+import { resetAuthedUser } from "./authedUserSlice";
+import { fetchUsers, setUserVote, setQuestion, resetUsers } from "./usersSlice";
+import { fetchQuestions, setOptionVote, setNewQuestion, resetQuestions } from "./questionsSlice";
 
 export const handleInitialData = () => async (dispatch) => {
   try {
@@ -11,6 +12,7 @@ export const handleInitialData = () => async (dispatch) => {
     console.error("Error fetching initial data:", error);
   }
 };
+
 export const handleUserVote =
   ({ userId, questionId, option }) =>
   (dispatch) => {
@@ -29,3 +31,29 @@ export const handleUserVote =
       })
     );
   };
+
+  export const handleAddQuestion =
+    ({ questionId, userId, optionOne, optionTwo}) =>
+      (dispatch) => {
+    dispatch(
+      setNewQuestion({
+        questionId,
+        userId,
+        optionOne,
+        optionTwo,
+      })
+    );
+    dispatch(
+      setQuestion({
+        userId,
+        questionId,
+      })
+    );
+  };
+
+  export const handleResetAllState = () => (dispatch) => {
+    dispatch(resetAuthedUser());
+    dispatch(resetUsers());
+    dispatch(resetQuestions());
+
+  }

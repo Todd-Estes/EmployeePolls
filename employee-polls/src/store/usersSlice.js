@@ -4,7 +4,7 @@ import { getUsers } from "../utils/api";
 
 
 const usersSlice = createSlice({
-  name: 'users',
+  name: "users",
   initialState: null,
   reducers: {
     setUsers: (state, action) => {
@@ -16,14 +16,23 @@ const usersSlice = createSlice({
         ...state[userId],
         answers: {
           ...state[userId].answers,
-          [questionId]: option
-        }
-      }
-    }
-  }
+          [questionId]: option,
+        },
+      };
+    },
+    // TODO see about dropping spread operators...since with toolkit we're using Immer...and look up Immer for that matter
+    setQuestion: (state, action) => {
+      const { userId, questionId } = action.payload;
+      state[userId] = {
+        ...state[userId],
+        questions: [...state[userId].questions, questionId],
+      };
+    },
+    resetUsers: () => null,
+  },
 });
 
-export const { setUsers, setUserVote } = usersSlice.actions;
+export const { setUsers, setUserVote, setQuestion, resetUsers } = usersSlice.actions;
 
 export const fetchUsers = () => async (dispatch) => {
   const { users } = await getUsers();

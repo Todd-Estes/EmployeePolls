@@ -10,4 +10,8 @@ export function getPercentOfVote(question, questionOption) {
   return Math.round((questionOption.votes.length / questionVotesTotal) * 100);
 }
 
-// #e7dddd
+export function generateCustomId() {
+  const uuid = crypto.randomUUID();
+  const strippedUuid = uuid.replace(/-/g, "");
+  return strippedUuid.slice(0, 21);
+}

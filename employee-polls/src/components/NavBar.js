@@ -1,11 +1,17 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from "react-redux";
+import { handleResetAllState } from '../store/combinedActions';
 
 const NavBar = () => {
+  const dispatch = useDispatch();
   const authedUser = useSelector(state => state.authedUser);
   const loggedInUser = useSelector(state => state.users[authedUser])
-  // TODO : flex links into single line, move username and avatar to right, implement logout
+
+  const logout = () => {
+    dispatch(handleResetAllState());
+  }
+
   return (
     <nav className="navbar">
       <div className="container navbar-content">
@@ -27,6 +33,7 @@ const NavBar = () => {
             className="user-avatar"
           />
           <span className="username">{loggedInUser.name}</span>
+          <button onClick={logout}>Log Out</button>
         </div>
       </div>
     </nav>

@@ -6,10 +6,11 @@ const authedUserSlice = createSlice({
   reducers: {
     setAuthedUser: (state, action) => {
       return action.payload;
-    }
+    },
+    resetAuthedUser: () => null
   }
 });
 
-export const { setAuthedUser } = authedUserSlice.actions;
+export const { setAuthedUser, resetAuthedUser } = authedUserSlice.actions;
 
 export default authedUserSlice.reducer;

@@ -15,10 +15,12 @@ function App() {
   const users = useSelector(state => state.users);
   const authedUser = useSelector(state => state.authedUser);
   const loading = users === null;
- 
+
   useEffect(() => {
-    dispatch(handleInitialData());
-  }, []);
+    if (!users) {
+      dispatch(handleInitialData());
+    }
+  }, [dispatch, users]);
 
   if (loading) {
     return <p>LOADING</p>

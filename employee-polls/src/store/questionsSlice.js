@@ -9,19 +9,36 @@ const questionsSlice = createSlice({
       return action.payload;
     },
     setOptionVote: (state, action) => {
-      const { userId, questionId, option} = action.payload;
+      const { userId, questionId, option } = action.payload;
       state[questionId] = {
         ...state[questionId],
         [option]: {
           ...state[questionId][option],
-          votes: [...state[questionId][option].votes, userId]
-        }
+          votes: [...state[questionId][option].votes, userId],
+        },
       };
     },
+    setNewQuestion: (state, action) => {
+      const { questionId, userId, optionOne, optionTwo } = action.payload;
+      state[questionId] = {
+        id: questionId,
+        author: userId,
+        timestamp: Date.now(),
+        optionOne: {
+          votes: [],
+          text: optionOne,
+        },
+        optionTwo: {
+          votes: [],
+          text: optionTwo,
+        },
+      };
+    },
+    resetQuestions: () => null,
   },
 });
 
-export const { setQuestions, setOptionVote } = questionsSlice.actions;
+export const { setQuestions, setOptionVote, setNewQuestion, resetQuestions } = questionsSlice.actions;
 
 export const fetchQuestions = () => async (dispatch) => {
   const { questions } = await getQuestions();
