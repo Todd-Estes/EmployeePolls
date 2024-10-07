@@ -1,8 +1,8 @@
-import { createSlice } from "@reduxjs/toolkit";
-import { getQuestions } from "../utils/api";
+import { createSlice } from '@reduxjs/toolkit';
+import { getQuestions } from '../utils/api';
 
 const questionsSlice = createSlice({
-  name: "questions",
+  name: 'questions',
   initialState: null,
   reducers: {
     setQuestions: (state, action) => {

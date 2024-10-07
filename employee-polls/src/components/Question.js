@@ -1,25 +1,21 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { useParams } from 'react-router-dom';
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 import Error from './Error';
 import VoteOption from './VoteOption';
-import { setUserVote } from '../store/usersSlice';
 
 const Question = () => {
   const { questionId } = useParams();
   const question = useSelector((state) => state.questions[questionId]);
+  const authedUser = useSelector((state) => state.authedUser);
+  const answered = useSelector(
+    (state) => state.users[authedUser].answers[questionId]
+  );
+  const authorUser = useSelector((state) => state.users[question?.author]);
 
   if (!question) {
     return <Error />;
   }
-
-  const dispatch = useDispatch();
-  const authedUser = useSelector((state) => state.authedUser);
-  const loggedInUser = useSelector((state) => state.users[authedUser]);
-  const answered = useSelector(
-    (state) => state.users[authedUser].answers[questionId]
-  );
-  const authorUser = useSelector((state) => state.users[question.author]);
 
   return (
     <div className="question-page">
@@ -51,6 +47,6 @@ const Question = () => {
       )}
     </div>
   );
-}
+};
 
 export default Question;

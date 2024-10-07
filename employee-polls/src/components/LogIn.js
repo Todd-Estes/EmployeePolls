@@ -1,5 +1,5 @@
 import React from 'react';
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector, useDispatch } from 'react-redux';
 import { setAuthedUser } from '../store/authedUserSlice';
 
 const LogIn = () => {
@@ -8,9 +8,9 @@ const LogIn = () => {
 
   const handleChange = (event) => {
     event.preventDefault();
-    dispatch(setAuthedUser(event.target.value))
+    dispatch(setAuthedUser(event.target.value));
 
-  }
+  };
   return (
     <div className="container">
       <div>LogIn</div>

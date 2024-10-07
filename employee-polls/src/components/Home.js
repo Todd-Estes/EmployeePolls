@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import { useSelector } from 'react-redux';
 import QuestionCard from './QuestionsContainer';
 
@@ -27,11 +27,11 @@ const Home = () => {
     <div className="container">
       <div className="content">
         <h1>Home</h1>
-            <QuestionCard questions={answeredQuestions} cardTitle={"Answered Questions"}/>
-            <QuestionCard questions={newQuestions} cardTitle={"New Questions"}/>
+        <QuestionCard questions={answeredQuestions} cardTitle={'Answered Questions'}/>
+        <QuestionCard questions={newQuestions} cardTitle={'New Questions'}/>
       </div>
     </div>
   );
-}
+};
 
 export default Home;

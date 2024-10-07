@@ -1,30 +1,24 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { useState } from 'react';
-import { setNewQuestion } from '../store/questionsSlice';
 import { generateCustomId } from '../utils/helpers';
-import { setQuestion } from '../store/usersSlice';
 import { handleAddQuestion } from '../store/combinedActions';
 
 const NewQuestion = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const authedUser = useSelector((state) => state.authedUser);
-  // TODO see about removing loggedInUser
-  const loggedInUser = useSelector((state) => state.users[authedUser]);
-  const questions = useSelector((state) => state.questions);
 
   const [optionOneInput, setOptionOneInput] = useState('');
   const [optionTwoInput, setOptionTwoInput] = useState('');
 
   const updateOptionOneInput = (value) => {
     setOptionOneInput(value);
-  }
+  };
 
   const updateOptionTwoInput = (value) => {
     setOptionTwoInput(value);
-  }
+  };
 
   const inputsMissing = !optionOneInput || !optionTwoInput;
 
@@ -38,8 +32,8 @@ const NewQuestion = () => {
         optionTwo: optionTwoInput,
       })
     );
-    navigate("/")
-  }
+    navigate('/');
+  };
 
 
   return (
@@ -62,6 +56,6 @@ const NewQuestion = () => {
       </form>
     </div>
   );
-}
+};
 
 export default NewQuestion;

@@ -3,7 +3,7 @@ const {
   _getQuestions,
   _saveQuestion,
   _saveQuestionAnswer,
-} = require("./_DATA");
+} = require('./_DATA');
 
 export function getUsers() {
   return _getUsers().then((users) => ({
@@ -28,10 +28,3 @@ export function saveQuestion(question) {
     formattedQuestion,
   }));
 }
-
-// module.exports = {
-//   getUsers,
-//   getQuestions,
-//   saveQuestionAnswer,
-//   saveQuestion,
-// };

@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import QuestionCard from './QuestionCard';
 
 const QuestionsContainer = (props) => {
@@ -16,6 +16,6 @@ const QuestionsContainer = (props) => {
       </ul>
     </div>
   );
-}
+};
 
 export default QuestionsContainer;

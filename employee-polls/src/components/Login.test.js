@@ -1,9 +1,9 @@
-import React from "react";
-import { render, waitFor, fireEvent, screen, cleanup } from "@testing-library/react";
-import { Provider } from "react-redux";
-import { store } from "../store/index";
-import App from "./App";
-import { MemoryRouter } from "react-router-dom";
+import React from 'react';
+import { render, waitFor, fireEvent, screen, cleanup } from '@testing-library/react';
+import { Provider } from 'react-redux';
+import { MemoryRouter } from 'react-router-dom';
+import { store } from '../store/index';
+import App from './App';
 
 afterEach(() => {
   cleanup();
@@ -31,7 +31,7 @@ test('log in and arrive at home page', async () => {
     expect(screen.getByText(/Select a user.../i)).toBeInTheDocument();
   });
 
-  const dropdown = screen.getByRole("combobox");
+  const dropdown = screen.getByRole('combobox');
   expect(dropdown).toBeInTheDocument();
 
   expect(store.getState().authedUser).toBe(null);
@@ -44,4 +44,4 @@ test('log in and arrive at home page', async () => {
   });
 
   expect(screen).toMatchSnapshot();
-})
+});

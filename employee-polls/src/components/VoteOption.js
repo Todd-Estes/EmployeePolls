@@ -14,7 +14,7 @@ const VoteOption = (props) => {
   const authedUser = useSelector((state) => state.authedUser);
   const loggedInUser = useSelector((state) => state.users[authedUser]);
 
-  
+
   const handleVote = (option) => {
     dispatch(
       handleUserVote({
@@ -29,7 +29,10 @@ const VoteOption = (props) => {
       <p>{questionOption.text}</p>
       {answered ? (
         <div>
-          <p>There's {questionOption.votes.length} total vote(s) for this option</p>
+          <p>
+            There&apos;s {questionOption.votes.length} total vote(s) for this
+            option
+          </p>
           <p>{percentOfVote}% of people voted for this option</p>
         </div>
       ) : (
@@ -37,6 +40,6 @@ const VoteOption = (props) => {
       )}
     </div>
   );
-}
+};
 
 export default VoteOption;

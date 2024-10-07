@@ -1,6 +1,6 @@
-import React from 'react'
-import { formatDate } from "../utils/helpers";
+import React from 'react';
 import { Link } from 'react-router-dom';
+import { formatDate } from '../utils/helpers';
 
 const QuestionCard = (props) => {
   const { question} = props;
@@ -16,6 +16,6 @@ const QuestionCard = (props) => {
       </Link>
     </li>
   );
-}
+};
 
 export default QuestionCard;

@@ -1,8 +1,8 @@
 import React from 'react';
-import { useSelector } from "react-redux";
+import { useSelector } from 'react-redux';
 
 const Leaderboard = () => {
-  const users = useSelector((state) => state.users)
+  const users = useSelector((state) => state.users);
 
   const userTotals = Object.values(users).map((user) => {
     return {
@@ -13,8 +13,8 @@ const Leaderboard = () => {
       createdCount: user.questions.length,
       total: Object.keys(user.answers).length + user.questions.length,
     };
-    }
-  )
+  }
+  );
 
   const orderedUsers = userTotals.sort((a, b) => b.total - a.total);
 
@@ -52,6 +52,6 @@ const Leaderboard = () => {
       </div>
     </div>
   );
-}
+};
 
 export default Leaderboard;

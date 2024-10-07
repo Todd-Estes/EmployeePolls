@@ -1,7 +1,7 @@
 export function formatDate(timestamp) {
   const d = new Date(timestamp);
-  const time = d.toLocaleTimeString("en-US");
-  return time.substr(0, 5) + time.slice(-2) + " | " + d.toLocaleDateString();
+  const time = d.toLocaleTimeString('en-US');
+  return time.substr(0, 5) + time.slice(-2) + ' | ' + d.toLocaleDateString();
 }
 
 export function getPercentOfVote(question, questionOption) {
@@ -12,6 +12,6 @@ export function getPercentOfVote(question, questionOption) {
 
 export function generateCustomId() {
   const uuid = crypto.randomUUID();
-  const strippedUuid = uuid.replace(/-/g, "");
+  const strippedUuid = uuid.replace(/-/g, '');
   return strippedUuid.slice(0, 21);
 }
