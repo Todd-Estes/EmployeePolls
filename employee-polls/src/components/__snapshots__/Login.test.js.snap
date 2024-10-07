@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`renders login drop down 1`] = `
+exports[`log in and arrive at home page 1`] = `
 Object {
   "debug": [Function],
   "findAllByAltText": [Function],

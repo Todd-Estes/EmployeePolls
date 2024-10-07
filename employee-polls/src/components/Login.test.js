@@ -10,7 +10,7 @@ afterEach(() => {
   jest.clearAllTimers();
 });
 
-test('renders login drop down', async () => {
+test('log in and arrive at home page', async () => {
   render(
     <MemoryRouter>
       <Provider store={store}>
