@@ -51,6 +51,7 @@ body {
 
 .username {
   margin-left: 10px;
+  margin-right: 15px; /* Added margin to separate username from logout link */
 }
 
 .user-avatar {
@@ -58,6 +59,19 @@ body {
   height: 40px;
   border-radius: 50%;
   object-fit: cover;
+}
+
+.logout-link {
+  color: lime !important; /* Use !important to override any existing styles */
+  font-weight: bold;
+  text-decoration: none;
+  padding: 5px 10px;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+.logout-link:hover {
+  background-color: rgba(0, 255, 0, 0.1); /* Slight background on hover for better UX */
 }
 
 /* Home and Leaderboard styles */
@@ -74,31 +88,49 @@ h1 {
 }
 
 /* Login styles */
-.login-form {
-  max-width: 300px;
-  margin: 50px auto;
-  padding: 20px;
-  background: #fff;
-  border-radius: 5px;
-  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+.login-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-color: #282832;
 }
 
-.login-form input {
+.login-logo {
+  width: 200px;
+  height: 200px;
+  margin-bottom: 20px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.login-form {
+  background-color: #fff;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  text-align: center;
+}
+
+.login-form h2 {
+  color: #1dda68;
+  margin-bottom: 20px;
+}
+
+.login-form select {
   width: 100%;
   padding: 10px;
   margin-bottom: 10px;
   border: 1px solid #ddd;
-  border-radius: 3px;
+  border-radius: 4px;
+  background-color: #f9f9f9;
+  font-size: 16px;
 }
 
-.login-form button {
-  width: 100%;
-  padding: 10px;
-  background: #333;
-  color: #fff;
-  border: none;
-  border-radius: 3px;
-  cursor: pointer;
+.login-form select:focus {
+  outline: none;
+  border-color: #1dda68;
 }
 
 /* Leaderboard specific styles */

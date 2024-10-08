@@ -1,18 +1,18 @@
-import React from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import { useSelector, useDispatch } from 'react-redux';
-import { resetAuthedUser } from '../store/authedUserSlice';
-
+import React from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { resetAuthedUser } from "../store/authedUserSlice";
 
 const NavBar = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const authedUser = useSelector(state => state.authedUser);
-  const loggedInUser = useSelector(state => state.users[authedUser]);
+  const authedUser = useSelector((state) => state.authedUser);
+  const loggedInUser = useSelector((state) => state.users[authedUser]);
 
-  const logout = () => {
+  const handleLogout = (e) => {
+    e.preventDefault();
     dispatch(resetAuthedUser());
-    navigate('/');
+    navigate("/");
   };
 
   return (
@@ -36,7 +36,9 @@ const NavBar = () => {
             className="user-avatar"
           />
           <span className="username">{loggedInUser.name}</span>
-          <button onClick={logout}>Log Out</button>
+          <Link to="/" onClick={handleLogout} className="logout-link">
+            Log Out
+          </Link>
         </div>
       </div>
     </nav>
