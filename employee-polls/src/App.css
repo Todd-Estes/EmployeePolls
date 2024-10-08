@@ -318,3 +318,67 @@ h1 {
 .home-link:hover {
   background-color: #16b857;
 }
+
+.new-question-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  padding: 20px;
+  background-color: #282832;
+  color: #1dda68;
+}
+
+.new-question-container h1 {
+  margin-bottom: 30px;
+  font-size: 2.5rem;
+}
+
+.new-question-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 400px;
+}
+
+.new-question-input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 2px solid #1dda68;
+  border-radius: 5px;
+  background-color: #3a3a48;
+  color: #fff;
+  font-size: 1rem;
+}
+
+.new-question-input::placeholder {
+  color: #aaa;
+}
+
+.new-question-input:focus {
+  outline: none;
+  box-shadow: 0 0 5px #1dda68;
+}
+
+.new-question-submit {
+  padding: 10px 20px;
+  background-color: #1dda68;
+  color: #282832;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.new-question-submit:hover:not(:disabled) {
+  background-color: #16b857;
+}
+
+.new-question-submit:disabled {
+  background-color: #aaa;
+  cursor: not-allowed;
+}
