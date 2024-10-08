@@ -58,8 +58,8 @@ test('renders login drop down', async () => {
     expect(elements.length).toBeGreaterThan(0);
   });
 
-  const logoutButton = screen.getByText('Log Out');
-  await fireEvent.click(logoutButton);
+  const logoutLink = screen.getByText('Log Out');
+  await fireEvent.click(logoutLink);
 
   await waitFor(
     () => {
