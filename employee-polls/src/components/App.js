@@ -16,7 +16,6 @@ function App() {
   const dispatch = useDispatch();
   const users = useSelector((state) => state.users);
   const authedUser = useSelector((state) => state.authedUser);
-  const loading = users === null;
 
   useEffect(() => {
     dispatch(handleInitialData());
@@ -25,7 +24,7 @@ function App() {
   return (
     <>
       <LoadingBar />
-      {(!authedUser && loading) ? null : (
+      {(!authedUser && !users) ? null : (
         <>
           {(!authedUser && users) ? (
             <LogIn />
