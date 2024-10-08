@@ -22,7 +22,7 @@ const VoteOption = (props) => {
       })
     );
   };
-  
+
   return (
     <div>
       <p>{questionOption.text}</p>

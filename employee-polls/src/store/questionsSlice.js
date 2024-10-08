@@ -1,5 +1,4 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { getQuestions } from '../utils/api';
 
 const questionsSlice = createSlice({
   name: 'questions',
@@ -18,7 +17,7 @@ const questionsSlice = createSlice({
         },
       };
     },
-   setNewQuestion: (state, action) => {
+    setNewQuestion: (state, action) => {
       const { formattedQuestion } = action.payload;
       state[formattedQuestion.id] = formattedQuestion;
     },

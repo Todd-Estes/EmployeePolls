@@ -1,16 +1,16 @@
-import React, { useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { Route, Routes } from "react-router-dom";
-import LoadingBar from "react-redux-loading-bar";
-import "../App.css";
-import { handleInitialData } from "../store/combinedActions";
-import NavBar from "./NavBar";
-import Home from "./Home";
-import LogIn from "./LogIn";
-import Leaderboard from "./Leaderboard";
-import NewQuestion from "./NewQuestion";
-import Question from "./Question";
-import Error from "./Error";
+import React, { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { Route, Routes } from 'react-router-dom';
+import LoadingBar from 'react-redux-loading-bar';
+import '../App.css';
+import { handleInitialData } from '../store/combinedActions';
+import NavBar from './NavBar';
+import Home from './Home';
+import LogIn from './LogIn';
+import Leaderboard from './Leaderboard';
+import NewQuestion from './NewQuestion';
+import Question from './Question';
+import Error from './Error';
 
 function App() {
   const dispatch = useDispatch();
@@ -44,6 +44,6 @@ function App() {
       )}
     </>
   );
-};
+}
 
 export default App;

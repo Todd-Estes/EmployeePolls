@@ -1,7 +1,7 @@
-import React from "react";
-import { Link, useNavigate } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
-import { resetAuthedUser } from "../store/authedUserSlice";
+import React from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
+import { resetAuthedUser } from '../store/authedUserSlice';
 
 const NavBar = () => {
   const dispatch = useDispatch();
@@ -12,7 +12,7 @@ const NavBar = () => {
   const handleLogout = (e) => {
     e.preventDefault();
     dispatch(resetAuthedUser());
-    navigate("/");
+    navigate('/');
   };
 
   return (

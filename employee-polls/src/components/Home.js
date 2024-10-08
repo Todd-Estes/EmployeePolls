@@ -1,6 +1,6 @@
-import React, { useState } from "react";
-import { useSelector } from "react-redux";
-import QuestionsContainer from "./QuestionsContainer";
+import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
+import QuestionsContainer from './QuestionsContainer';
 
 const Home = () => {
   const [showAnswered, setShowAnswered] = useState(false);
@@ -34,17 +34,17 @@ const Home = () => {
       <div className="content">
         <h1>Home</h1>
         <button onClick={toggleQuestions}>
-          {showAnswered ? "Show New Questions" : "Show Answered Questions"}
+          {showAnswered ? 'Show New Questions' : 'Show Answered Questions'}
         </button>
         {showAnswered ? (
           <QuestionsContainer
             questions={answeredQuestions}
-            cardTitle={"Answered Questions"}
+            cardTitle={'Answered Questions'}
           />
         ) : (
           <QuestionsContainer
             questions={newQuestions}
-            cardTitle={"New Questions"}
+            cardTitle={'New Questions'}
           />
         )}
       </div>

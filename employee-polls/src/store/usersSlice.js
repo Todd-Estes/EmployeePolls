@@ -1,7 +1,4 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { getUsers } from '../utils/api';
-
-
 
 const usersSlice = createSlice({
   name: 'users',

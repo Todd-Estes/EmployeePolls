@@ -48,7 +48,7 @@ export const handleAddQuestion = ({ author, optionOneText, optionTwoText }) => {
         dispatch(setQuestion(formattedQuestion));
       })
       .catch((error) => {
-        console.error("Error adding question: ", error);
+        console.error('Error adding question: ', error);
       })
       .finally(() => {
         dispatch(hideLoading());

@@ -1,7 +1,7 @@
-import React from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { setAuthedUser } from "../store/authedUserSlice";
-import voteImage from "../images/vote-image.png";
+import React from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { setAuthedUser } from '../store/authedUserSlice';
+import voteImage from '../images/vote-image.png';
 
 const LogIn = () => {
   const dispatch = useDispatch();
@@ -14,10 +14,10 @@ const LogIn = () => {
 
   return (
     <div className="login-container">
-      <img 
+      <img
         src={voteImage}
         alt="Login Logo"
-        className="login-logo" 
+        className="login-logo"
       />
       <div className="login-form">
         <h2>Log In</h2>

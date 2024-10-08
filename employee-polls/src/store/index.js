@@ -1,8 +1,8 @@
 import { configureStore } from '@reduxjs/toolkit';
+import { loadingBarReducer } from 'react-redux-loading-bar';
 import usersReducer from './usersSlice';
 import authedUserReducer from './authedUserSlice';
 import questionsReducer from  './questionsSlice';
-import { loadingBarReducer } from 'react-redux-loading-bar';
 
 export const store = configureStore({
   reducer: {
