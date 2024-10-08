@@ -12,18 +12,17 @@ const VoteOption = (props) => {
 
   const dispatch = useDispatch();
   const authedUser = useSelector((state) => state.authedUser);
-  const loggedInUser = useSelector((state) => state.users[authedUser]);
-
 
   const handleVote = (option) => {
     dispatch(
       handleUserVote({
-        userId: loggedInUser.id,
+        userId: authedUser,
         questionId: question.id,
         option,
       })
     );
   };
+  
   return (
     <div>
       <p>{questionOption.text}</p>

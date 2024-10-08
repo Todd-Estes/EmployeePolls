@@ -26,10 +26,9 @@ const NewQuestion = () => {
     event.preventDefault();
     dispatch(
       handleAddQuestion({
-        questionId: generateCustomId(),
-        userId: authedUser,
-        optionOne: optionOneInput,
-        optionTwo: optionTwoInput,
+        author: authedUser,
+        optionOneText: optionOneInput,
+        optionTwoText: optionTwoInput,
       })
     );
     navigate('/');

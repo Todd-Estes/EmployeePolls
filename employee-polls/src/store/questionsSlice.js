@@ -18,30 +18,15 @@ const questionsSlice = createSlice({
         },
       };
     },
-    setNewQuestion: (state, action) => {
-      const { questionId, userId, optionOne, optionTwo } = action.payload;
-      state[questionId] = {
-        id: questionId,
-        author: userId,
-        timestamp: Date.now(),
-        optionOne: {
-          votes: [],
-          text: optionOne,
-        },
-        optionTwo: {
-          votes: [],
-          text: optionTwo,
-        },
-      };
+   setNewQuestion: (state, action) => {
+      const { formattedQuestion } = action.payload;
+      state[formattedQuestion.id] = formattedQuestion;
     },
   },
 });
 
 export const { setQuestions, setOptionVote, setNewQuestion } = questionsSlice.actions;
 
-export const fetchQuestions = () => async (dispatch) => {
-  const { questions } = await getQuestions();
-  dispatch(setQuestions(questions));
-};
+
 
 export default questionsSlice.reducer;

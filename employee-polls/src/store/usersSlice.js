@@ -20,12 +20,13 @@ const usersSlice = createSlice({
         },
       };
     },
-    // TODO see about dropping spread operators...since with toolkit we're using Immer...and look up Immer for that matter
+
     setQuestion: (state, action) => {
-      const { userId, questionId } = action.payload;
-      state[userId] = {
-        ...state[userId],
-        questions: [...state[userId].questions, questionId],
+      const { formattedQuestion } = action.payload;
+      const { author, id } = formattedQuestion;
+      state[author] = {
+        ...state[author],
+        questions: [...state[author].questions, id],
       };
     },
   },
@@ -33,9 +34,5 @@ const usersSlice = createSlice({
 
 export const { setUsers, setUserVote, setQuestion } = usersSlice.actions;
 
-export const fetchUsers = () => async (dispatch) => {
-  const { users } = await getUsers();
-  dispatch(setUsers(users));
-};
 
 export default usersSlice.reducer;
