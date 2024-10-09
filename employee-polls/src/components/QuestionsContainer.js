@@ -4,7 +4,7 @@ import QuestionCard from './QuestionCard';
 const QuestionsContainer = (props) => {
   const { questions, cardTitle } = props;
 
-  const sortedQuestions = [...questions].sort((a, b) => a.timestamp - b.timestamp);
+  const sortedQuestions = [...questions].sort((a, b) => b.timestamp - a.timestamp);
 
   return (
     <div className="questions-container">
