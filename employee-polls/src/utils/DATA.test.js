@@ -1,4 +1,9 @@
 import { _saveQuestion, _saveQuestionAnswer } from './_DATA';
+import { cleanup } from "@testing-library/react";
+
+afterEach(() => {
+  cleanup();
+});
 
 describe('_saveQuestion', () => {
   it('returns a question on successful save', async () => {
