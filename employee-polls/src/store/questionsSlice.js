@@ -9,13 +9,13 @@ const questionsSlice = createSlice({
     },
     setOptionVote: (state, action) => {
       const { userId, questionId, option } = action.payload;
-      state[questionId] = {
-        ...state[questionId],
-        [option]: {
-          ...state[questionId][option],
-          votes: [...state[questionId][option].votes, userId],
-        },
-      };
+      if (!state[questionId]) {
+        state[questionId] = {};
+      }
+      if (!state[questionId][option]) {
+        state[questionId][option] = { votes: [] };
+      }
+      state[questionId][option].votes.push(userId);
     },
     setNewQuestion: (state, action) => {
       const { formattedQuestion } = action.payload;
@@ -25,7 +25,5 @@ const questionsSlice = createSlice({
 });
 
 export const { setQuestions, setOptionVote, setNewQuestion } = questionsSlice.actions;
-
-
 
 export default questionsSlice.reducer;

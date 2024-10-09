@@ -9,27 +9,22 @@ const usersSlice = createSlice({
     },
     setUserVote: (state, action) => {
       const { userId, questionId, option } = action.payload;
-      state[userId] = {
-        ...state[userId],
-        answers: {
-          ...state[userId].answers,
-          [questionId]: option,
-        },
-      };
+      if (!state[userId]) {
+        state[userId] = { answers: {} };
+      }
+      state[userId].answers[questionId] = option;
     },
-
     setQuestion: (state, action) => {
       const { formattedQuestion } = action.payload;
       const { author, id } = formattedQuestion;
-      state[author] = {
-        ...state[author],
-        questions: [...state[author].questions, id],
-      };
+      if (!state[author]) {
+        state[author] = { questions: [] };
+      }
+      state[author].questions.push(id);
     },
   },
 });
 
 export const { setUsers, setUserVote, setQuestion } = usersSlice.actions;
-
 
 export default usersSlice.reducer;
